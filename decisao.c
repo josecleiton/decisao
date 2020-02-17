@@ -59,6 +59,7 @@ int calculaID(int priority, int ttl) {
  */
 Nodo* escolheFila(Arvore* raiz, int priority, int ttl) {
    int id = calculaID(priority, ttl);
+   printf("Escolhi o nó %d da árvore\n", id);
    Arvore* no = buscaArvore(raiz, id);
    if (no != NULL) {
       inserirFila(no->fila, priority, ttl);
@@ -80,6 +81,10 @@ Arvore* buscaArvore(Arvore* raiz, int id) {
       return raiz;
    }
    return NULL;
+}
+
+void inserirFila(Nodo* fila, int priority, int ttl) {
+
 }
 
 void liberaArvore(Arvore* raiz) {

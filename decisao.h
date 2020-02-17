@@ -16,12 +16,12 @@ typedef struct _arv {
    struct _arv *esq, *dir;
 } Arvore;
 
-void inserirFila(Nodo* fila, int n1, int n2);
 Arvore* criarArv(void);
 Arvore* buscaArvore(Arvore* raiz, int id);
 int calculaID(int priority, int ttl);
 
 Nodo* escolheFila(Arvore* raiz, int priority, int ttl);
+void inserirFila(Nodo* fila, int priority, int ttl);
 
 void liberaArvore(Arvore* raiz);
 void liberaFila(Nodo* ini);
