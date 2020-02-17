@@ -132,9 +132,9 @@ void liberaArvore(Arvore* raiz) {
    }
 }
 
-void liberaFila(Nodo* ini) {
-   if (ini != NULL) {
-      liberaFila(ini->prox);
-      free(ini);
+void liberaFila(Nodo* no) {
+   if (no != NULL) {
+      liberaFila(no->prox);
+      free(no);
    }
 }

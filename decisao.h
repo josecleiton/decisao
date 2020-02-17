@@ -6,10 +6,11 @@ typedef struct _nodo {
    struct _nodo *prox, *ant;
 } Nodo;
 
-// Nossa arvore
-// O id será um identificador da fila a inserir
-// já que temos um intervalo [1, 3], [4, 6] e [7, 10]
-// id 1 é o primeiro intervalo e assim por diante
+/* Arvore de filas
+ * O id será um identificador da fila a inserir
+ * já que temos um intervalo [1, 3], [4, 6] e [7, 10]
+ * id 1 é o primeiro intervalo e assim por diante
+ */
 typedef struct _arv {
    int id;
    Nodo* fila;
