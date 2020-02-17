@@ -3,7 +3,7 @@
 // Nossa fila
 typedef struct _nodo {
    int priority, ttl;
-   struct _nodo* prox;
+   struct _nodo *prox, *ant;
 } Nodo;
 
 // Nossa arvore

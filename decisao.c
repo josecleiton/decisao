@@ -82,13 +82,23 @@ Arvore* buscaArvore(Arvore* raiz, int id) {
    return NULL;
 }
 
+Nodo* criaNodoFila(int priority, int ttl) {
+   Nodo* no = (Nodo*)mylloc(sizeof(Nodo));
+   no->priority = priority;
+   no->ttl = ttl;
+   return no;
+}
+
 Nodo* inserirFila(Nodo* fila, int priority, int ttl) {
-   if (fila != NULL) {
-      fila->prox = inserirFila(fila->prox, priority, ttl);
+   if (fila) {
+      if (fila->prox) {
+         fila->prox = inserirFila(fila->prox, priority, ttl);
+      } else {
+         fila->prox = criaNodoFila(priority, ttl);
+         fila->prox->ant = fila;
+      }
    } else {
-      fila = (Nodo*)mylloc(sizeof(Nodo));
-      fila->priority = priority;
-      fila->ttl = ttl;
+      fila = criaNodoFila(priority, ttl);
    }
    return fila;
 }
