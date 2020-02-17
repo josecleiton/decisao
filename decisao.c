@@ -25,16 +25,15 @@ Arvore* inserirArv(Arvore* raiz, int id) {
  * Cria Árvore balanceada
  *             2
  *            / \
- *           1   4
- *              / \
- *             3   5
+ *           1   3
+ *                \
+ *                 4
  */
 Arvore* criarArv(void) {
    Arvore* raiz = inserirArv(NULL, 2);
    raiz = inserirArv(raiz, 1);
-   raiz = inserirArv(raiz, 4);
    raiz = inserirArv(raiz, 3);
-   raiz = inserirArv(raiz, 5);
+   raiz = inserirArv(raiz, 4);
    return raiz;
 }
 
@@ -62,7 +61,7 @@ Nodo* escolheFila(Arvore* raiz, int priority, int ttl) {
    printf("Escolhi o nó %d da árvore\n", id);
    Arvore* no = buscaArvore(raiz, id);
    if (no != NULL) {
-      inserirFila(no->fila, priority, ttl);
+      no->fila = inserirFila(no->fila, priority, ttl);
       return no->fila;
    }
    return NULL;
@@ -83,8 +82,35 @@ Arvore* buscaArvore(Arvore* raiz, int id) {
    return NULL;
 }
 
-void inserirFila(Nodo* fila, int priority, int ttl) {
+Nodo* inserirFila(Nodo* fila, int priority, int ttl) {
+   if (fila != NULL) {
+      fila->prox = inserirFila(fila->prox, priority, ttl);
+   } else {
+      fila = (Nodo*)mylloc(sizeof(Nodo));
+      fila->priority = priority;
+      fila->ttl = ttl;
+   }
+   return fila;
+}
 
+void printArvore(Arvore* raiz) {
+   if (raiz != NULL) {
+      printArvore(raiz->esq);
+      printf("Nó %d: [", raiz->id);
+      printFila(raiz->fila);
+      printf("]\n");
+      printArvore(raiz->dir);
+   }
+}
+
+void printFila(Nodo* fila) {
+   if (fila != NULL) {
+      printf("{prioridade: %d, ttl: %d}", fila->priority, fila->ttl);
+      if (fila->prox) {
+         printf(", ");
+         printFila(fila->prox);
+      }
+   }
 }
 
 void liberaArvore(Arvore* raiz) {

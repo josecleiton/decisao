@@ -16,6 +16,8 @@ int main() {
    escolheFila(arv, 8, 10);
    escolheFila(arv, 9, 10);
 
+   printArvore(arv);
+
    liberaArvore(arv);
    return 0;
 }

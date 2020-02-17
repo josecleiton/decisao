@@ -21,7 +21,9 @@ Arvore* buscaArvore(Arvore* raiz, int id);
 int calculaID(int priority, int ttl);
 
 Nodo* escolheFila(Arvore* raiz, int priority, int ttl);
-void inserirFila(Nodo* fila, int priority, int ttl);
+Nodo* inserirFila(Nodo* fila, int priority, int ttl);
+void printArvore(Arvore* raiz);
+void printFila(Nodo* fila);
 
 void liberaArvore(Arvore* raiz);
 void liberaFila(Nodo* ini);
